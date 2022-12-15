@@ -1,0 +1,21 @@
+# Add a schema to a collection
+
+To use the validation features you need to have Zod installed on your machine.
+
+```bash filename="Zod Installation" copy
+npm i zod@latest
+```
+
+Add a schema to a collection by calling the setSchema() method.
+
+```js filename="Add a schema" copy
+db.setSchema(z.object({zod-schema}, 'collection name');
+```
+
+Note that passing the collection name is optional if the setSchema() method is chained to the useCollection() method like this.
+
+```js filename="Chain the setSchema method" copy
+db.useCollection('users').setSchema(z.object({zod-schema});
+```
+
+All the above methods don't work if you pass an array as param at the useCollection method.
