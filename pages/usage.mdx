@@ -54,3 +54,13 @@ Note that if you want to call MongoDb.Db methods (create db users, create collec
 ```js filename="Database" copy
 const database = db.database();
 ```
+
+Everything togheter should look like this:
+```js filename="Everything"
+import { imongo } from "imongo";
+
+const db = new imongo();
+await db.init("cluster-url", "database-name").connect();
+db.useCollection("users");
+const users = await db.collection("users")?.find().toArray();
+```
