@@ -7,7 +7,7 @@ useSafeValidation() throws an error if the schemas doesn't match, if it does mat
 ```js filename="Safe schema validation" {3} copy
 const object = { name: "Simone" };
 
-const validatedObject = db.useSafeValidation(object);
+const validatedObject = db.useSafeValidation(object, 'collection name');
 ```
 
 useUnsafeValidation() return either the same object (the schemas match), or an error object (the schemas doesnt'match).
@@ -15,5 +15,12 @@ useUnsafeValidation() return either the same object (the schemas match), or an e
 ```js filename="Unsafe schema validation" {3} copy
 const object = { name: "Simone" };
 
-const validatedObject = db.useUnsafeValidation(object);
+const validatedObject = db.useUnsafeValidation(object, 'collection name');
+```
+
+Note that in both useSafeValidation and useUnsafeValidation the collection name is optional if you chain the method the collection method like this.
+```js filename="Unsafe schema validation" {3} copy
+const object = { name: "Simone" };
+
+await db.collection('users').insertOne(db.useSafeValidation(object));
 ```
