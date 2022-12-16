@@ -9,3 +9,25 @@ IMongo gives you a **simple**, **powerful** and **flexible** tool that add a lay
 ## Go to package page
 
 You can find the package on NPM [https://www.npmjs.com/package/imongo](https://www.npmjs.com/package/imongo).
+
+## Side by side comparison with MongoDriver
+```js filename="With MongoDriver" 
+import * as mongoDB from "mongodb";
+
+const client: mongoDB.MongoClient = new mongoDB.MongoClient("cluster-url");
+await client.connect();
+const db: mongoDB.Db = client.db("db-name");
+const usersCollection: mongoDB.Collection = db.collection("users");
+
+const users = await usersCollection.find().toArray();
+```
+```js filename="With IMongo" 
+import { imongo } from "imongo";
+
+const db = new imongo();
+await db.init("cluster-url", "db-name").connect();
+db.useCollection("users");
+
+const users = await db.collection("users")?.find().toArray();
+```
+As you can see with IMongo you don't have to remebered all this different types, you just create an instance of IMongo class and use the provided methods. Other than that IMongo provides schema validation with Zod out of the box (MongoDriver doesn't). 
