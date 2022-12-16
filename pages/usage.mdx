@@ -2,25 +2,25 @@
 
 The first thing to do is to import imongo.
 
-```js filename="demo.js" copy
+```js filename="Import" copy
 import { imongo } from "imongo";
 ```
 
 Now you can declare our instace of IMongo
 
-```js filename="demo.js" copy
+```js filename="Class instance" copy
 const db = new imongo();
 ```
 
 To connect to the MongoDB Cluster and database we need to call the init() method and pass the connection url (without the database name insede of it) and the database name.
 
-```js filename="demo.js" copy
+```js filename="Init" copy
 db.init("cluster-url", "database-name");
 ```
 
 Now you can call the async method connect().
 
-```js filename="demo.js" copy
+```js filename="Connect" copy
 await db.connect();
 ```
 
