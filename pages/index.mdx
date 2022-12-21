@@ -1,17 +1,18 @@
 # Introduction
- 
+
 IMongo is a TypeScript package that helps interacting with MongoDB.
 
 ## Why IMongo?
 
-IMongo gives you a **simple**, **powerful** and **flexible** tool that add a layer on top of MongoDB.
+IMongo gives you a **simple**, **powerful** and **flexible** tool to interact with MongoDB and add schema validation to collections through Zod .
 
 ## Go to package page
 
 You can find the package on NPM [https://www.npmjs.com/package/imongo](https://www.npmjs.com/package/imongo).
 
 ## Side by side comparison with MongoDriver
-```js filename="With MongoDriver" 
+
+```js filename="With MongoDriver"
 import * as mongoDB from "mongodb";
 
 const client: mongoDB.MongoClient = new mongoDB.MongoClient("cluster-url");
@@ -21,7 +22,8 @@ const usersCollection: mongoDB.Collection = db.collection("users");
 
 const users = await usersCollection.find().toArray();
 ```
-```js filename="With IMongo" 
+
+```js filename="With IMongo"
 import { imongo } from "imongo";
 
 const db = new imongo();
@@ -30,4 +32,5 @@ db.useCollection("users");
 
 const users = await db.collection("users")?.find().toArray();
 ```
-As you can see with IMongo you don't have to remebered all this different types, you just create an instance of IMongo class and use the provided methods. Other than that IMongo provides schema validation with Zod out of the box (MongoDriver doesn't). 
+
+As you can see with IMongo you don't have to remebered all this different types, you just create an instance of IMongo class and use the provided methods. Other than that IMongo provides schema validation with Zod out of the box (MongoDriver doesn't).
