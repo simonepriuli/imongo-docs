@@ -4,7 +4,7 @@
 
 Old method:
 
-```js filename="Import" copy
+```js filename="Import"
 import { imongo } from "imongo";
 const db = new imongo();
 await db.init("cluster-url", "database-name").connect();
@@ -12,7 +12,7 @@ await db.init("cluster-url", "database-name").connect();
 
 New method:
 
-```js filename="Import" copy
+```js filename="Import"
 import { db } from "imongo";
 await db.init("cluster-url", "database-name").connect();
 ```
@@ -21,19 +21,18 @@ Note that you can instanciate new imongo classes anyway by importing **imongo** 
 
 ### Updated useSafeValidation
 
-Now useSafeValidation requires by default a check on the success property of the object.
+Now useSafeValidation requires a check on the success property of the object  by default.
 
 This won't work anymore:
 
-```js filename="Old useSafeValidation usage" copy
+```js filename="Old useSafeValidation usage"
 const user = db.useSafeValidation({ name: "Simone" });
 await db.collection("users")?.insertOne(user);
 ```
 
 You have to check on the user.success property first like this:
-This won't work anymore:
 
-```js filename="New useSafeValidation usage" copy
+```js filename="New useSafeValidation usage"
 const user = db.useSafeValidation({ name: "Simone" });
 if (user?.success) {
   await db.collection("users")?.insertOne(user);
@@ -44,11 +43,11 @@ if (user?.success) {
 
 Before you had to install Zod and import Z from it by yourself like this:
 
-```bash filename="Zod Installation" copy
+```bash filename="Zod Installation"
 npm i zod@latest
 ```
 
-```js filename="Import Zod old method" copy
+```js filename="Import Zod old method"
 import { z } from "zod";
 ```
 
