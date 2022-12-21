@@ -6,12 +6,14 @@ To validate a schema you can chose useSafeValidation() or useUnsafeValidation()
 
 useSafeValidation() throws an error if the schemas doesn't match, if it does match it return the same object passed as parameter.
 
+### Safe validation
 ```js filename="Safe schema validation" {3} copy
 const object = { name: "Simone" };
 
 const validatedObject = db.useSafeValidation(object, 'collection name');
 ```
 
+### Unsafe validation
 useUnsafeValidation() return either the same object (the schemas match), or an error object (the schemas doesnt'match).
 
 ```js filename="Unsafe schema validation" {3} copy
@@ -20,6 +22,7 @@ const object = { name: "Simone" };
 const validatedObject = db.useUnsafeValidation(object, 'collection name');
 ```
 
+### Chaining
 Note that in both useSafeValidation and useUnsafeValidation the collection name is optional if you chain the method the collection method like this.
 ```js filename="Unsafe schema validation" {3} copy
 const object = { name: "Simone" };

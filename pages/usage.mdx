@@ -1,23 +1,27 @@
 # Usage
 
-The first thing to do is to import imongo.
+### Import
+The first step is is to import imongo.
 
 ```js filename="Import" copy
 import { imongo } from "imongo";
 ```
 
-Now you can declare our instace of IMongo
+### Class instace
+Now you have to declare an instace of IMongo, we suggest to call it db.
 
 ```js filename="Class instance" copy
 const db = new imongo();
 ```
 
-To connect to the MongoDB Cluster and database we need to call the init() method and pass the connection url (without the database name insede of it) and the database name.
+### Setup
+To connect to the MongoDB Cluster and database you have to call the init() method and pass the connection url (without the database name insede of it) and the database name.
 
 ```js filename="Init" copy
 db.init("cluster-url", "database-name");
 ```
 
+### Connect
 Now you can call the async method connect().
 
 ```js filename="Connect" copy
@@ -31,6 +35,7 @@ It might be useful to do so when you don't need to export to the whole project t
 await db.init("cluster-url", "database-name").connect();
 ```
 
+### useCollection
 Now you need to set the collections we might need to use with the useCollection() method.
 
 ```js filename="useCollection" copy
@@ -42,7 +47,7 @@ You can also pass an array of strings but it's not recommended for reaseons you'
 ```js filename="useCollection with array" copy
 db.useCollection(["users", "posts"]);
 ```
-
+### Usage with MongoDriver
 Finally you can use the MongoDriver methods (ex: find, findOne, insert, etc.) calling the collection() method.
 
 ```js filename="MongoDriver methods" copy
@@ -55,6 +60,7 @@ Note that if you want to call MongoDb.Db methods (create db users, create collec
 const database = db.database();
 ```
 
+### Summary
 Everything togheter should look like this:
 ```js filename="Everything"
 import { imongo } from "imongo";
