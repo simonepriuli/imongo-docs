@@ -1,21 +1,21 @@
 # Usage
 
 ### Import
-The first step is is to import imongo.
+The first step is to import imongo.
 
 ```js filename="Import" copy
 import { imongo } from "imongo";
 ```
 
-### Class instace
-Now you have to declare an instace of IMongo, we suggest to call it db.
+### Class instance
+Now you have to declare an instance of IMongo, we suggest to call it db.
 
 ```js filename="Class instance" copy
 const db = new imongo();
 ```
 
 ### Setup
-To connect to the MongoDB Cluster and database you have to call the init() method and pass the connection url (without the database name insede of it) and the database name.
+To connect to the MongoDB cluster and database you have to call the init() method and pass the connection url (without the database name in it) and the database name.
 
 ```js filename="Init" copy
 db.init("cluster-url", "database-name");
@@ -29,20 +29,20 @@ await db.connect();
 ```
 
 Note that you can also chain the init() and the connect() methods like this.
-It might be useful to do so when you don't need to export to the whole project the imongo class instance.
 
 ```js filename="Init" copy
 await db.init("cluster-url", "database-name").connect();
 ```
+It might be useful to do so when you don't need to export to the whole project the imongo class instance.
 
 ### useCollection
-Now you need to set the collections we might need to use with the useCollection() method.
+Now for every collection you want to use, you have to set it with the useCollection() method.
 
 ```js filename="useCollection" copy
 db.useCollection("users");
 ```
 
-You can also pass an array of strings but it's not recommended for reaseons you'll see later.
+You can also pass an array of strings (collections) but it is not recommended as you can't chain the setSchema() method wich is considered to be a best practice.
 
 ```js filename="useCollection with array" copy
 db.useCollection(["users", "posts"]);
