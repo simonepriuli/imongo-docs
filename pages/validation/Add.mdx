@@ -8,16 +8,16 @@ npm i zod@latest
 ```
 
 ### Schema
-Add a schema to a collection by calling the setSchema() method.
+Add a schema to a collection by calling the setSchema() method. The schema must be a z.object() of type z.ZodType. You can read the Zod documentation [here](https://zod.dev/).
 
 ```js filename="Add a schema" copy
-db.setSchema(z.object({zod-schema}, 'collection name');
+db.setSchema(mySchema, 'collection name');
 ```
 
 Note that passing the collection name is optional if the setSchema() method is chained to the useCollection() method like this.
 
 ```js filename="Chain the setSchema method" copy
-db.useCollection('users').setSchema(z.object({zod-schema});
+db.useCollection('users').setSchema(mySchema);
 ```
 
 All the above methods won't work if you pass an array as param at the useCollection method.
