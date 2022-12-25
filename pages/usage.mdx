@@ -1,17 +1,10 @@
 # Usage
 
 ### Import
-The first step is to import imongo.
+The first step is to import db from imongo.
 
 ```js filename="Import" copy
-import { imongo } from "imongo";
-```
-
-### Class instance
-Now you have to declare an instance of IMongo, we suggest to call it db.
-
-```js filename="Class instance" copy
-const db = new imongo();
+import { db } from "imongo";
 ```
 
 ### Setup
@@ -63,9 +56,8 @@ const database = db.database();
 ### Summary
 Everything togheter should look like this:
 ```js filename="Everything"
-import { imongo } from "imongo";
+import { db } from "imongo";
 
-const db = new imongo();
 await db.init("cluster-url", "database-name").connect();
 db.useCollection("users");
 const users = await db.collection("users")?.find().toArray();

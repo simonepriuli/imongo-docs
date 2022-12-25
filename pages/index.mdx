@@ -30,9 +30,8 @@ const users = await usersCollection.find().toArray();
 ```
 
 ```js filename="With IMongo"
-import { imongo } from "imongo";
+import { db } from "imongo";
 
-const db = new imongo();
 await db.init("cluster-url", "db-name").connect();
 db.useCollection("users");
 
